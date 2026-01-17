@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white px-4 py-8">
 
-      {/* Header Section */}
       <div className="max-w-5xl mx-auto pt-10 text-center">
         <h1 className="text-3xl md:text-4xl font-semibold">
           Image to Video AI Generator
@@ -29,14 +28,10 @@ function App() {
         </p>
       </div>
 
-      {/* Cards Section */}
       <div className="max-w-5xl mx-auto mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        {/* Demo Card */}
         <div className="bg-neutral-900 rounded-xl border border-neutral-800 p-3 h-72">
           <DemoCard />
         </div>
-        {/* Upload Card */}
         <div className="bg-neutral-900 rounded-xl border border-neutral-800 p-4 h-72">
           <UploadCard
             imagePreview={imagePreview}
@@ -45,15 +40,12 @@ function App() {
               if (!file) return;
               setImage(file);
               setImagePreview(URL.createObjectURL(file));
-              setVideoUrl(""); // reset previous video if any
+              setVideoUrl(""); 
             }}
           />
         </div>
       </div>
-      {/* Control Section */}
       <div className="max-w-3xl mx-auto mt-14 bg-neutral-900 border border-neutral-800 rounded-xl p-6">
-       
-        {/* Prompt Input */}
         <textarea
           rows={4}
           value={prompt}
@@ -61,10 +53,6 @@ function App() {
           placeholder="Describe motion (e.g. gentle wind, cinematic movement)"
           className="w-full bg-neutral-800 text-white rounded-lg px-4 py-3 mb-4 resize-none outline-none focus:ring-2 focus:ring-gray-600"
         />
-
-
-
-        {/* Motion Dropdown */}
         <select
           value={motion}
           onChange={(e) => setMotion(e.target.value)}
@@ -75,8 +63,6 @@ function App() {
           <option value="dynamic">Dynamic</option>
         </select>
 
-
-        {/* Generate Button */}
         <div className="flex justify-center">
           <button
             onClick={async () => {
@@ -84,11 +70,7 @@ function App() {
 
               try {
                 setProcessing(true);
-
-                // 1️⃣ Upload image
                 const uploadRes = await uploadImage(image);
-
-                // 2️⃣ Generate video
                 const videoRes = await generateVideo({
                   imageUrl: uploadRes.imageUrl,
                   prompt,
@@ -126,11 +108,7 @@ function App() {
             </a>
           </div>
         )}
-
-
-
       </div>
-
     </div>
   );
 }
