@@ -4,7 +4,6 @@ function UploadCard({ onImageSelect, imagePreview }) {
   return (
     <label className="cursor-pointer w-full h-full block">
 
-      {/* Card container */}
       <div className="relative w-full h-full rounded-xl overflow-hidden border border-neutral-800 hover:border-neutral-600 transition">
 
         {imagePreview ? (
@@ -22,7 +21,6 @@ function UploadCard({ onImageSelect, imagePreview }) {
 
       </div>
 
-      {/* Hidden input */}
       <input
         type="file"
         accept="image/*"
