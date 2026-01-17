@@ -5,7 +5,6 @@ const replicate = new Replicate({
   auth: process.env.REPLICATE_API_TOKEN,
 });
 
-// 1️⃣ Upload image to Cloudinary (already working)
 exports.uploadImage = async (req, res) => {
   try {
     if (!req.file) {
@@ -28,7 +27,6 @@ exports.uploadImage = async (req, res) => {
   }
 };
 
-// 2️⃣ Generate video from image
 exports.generateVideo = async (req, res) => {
   try {
     const { imageUrl, prompt, motion } = req.body;
@@ -37,7 +35,6 @@ exports.generateVideo = async (req, res) => {
       return res.status(400).json({ error: "Image URL missing" });
     }
 
-    // 1️⃣ Get video stream from Replicate
     const videoStream = await replicate.run(
       "wan-video/wan-2.2-t2v-fast",
       {
@@ -49,7 +46,6 @@ exports.generateVideo = async (req, res) => {
       }
     );
 
-    // 2️⃣ Upload stream directly to Cloudinary as VIDEO
     const cloudinaryStream = cloudinary.uploader.upload_stream(
       { resource_type: "video" },
       (error, result) => {
@@ -58,12 +54,10 @@ exports.generateVideo = async (req, res) => {
           return res.status(500).json({ error: "Video upload failed" });
         }
 
-        // 3️⃣ Send video URL to frontend
         res.json({ videoUrl: result.secure_url });
       }
     );
 
-    // 4️⃣ Pipe Replicate stream → Cloudinary
     const reader = videoStream.getReader();
 
     while (true) {
