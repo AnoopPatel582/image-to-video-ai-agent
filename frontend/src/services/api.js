@@ -1,9 +1,11 @@
+const API_BASE_URL = import.meta.env.VITE_API_URL;
+
 export const uploadImage = async (imageFile) => {
   const formData = new FormData();
   formData.append("image", imageFile);
 
   const response = await fetch(
-    "http://localhost:5000/api/video/upload-image",
+    `${API_BASE_URL}/api/video/upload-image`,
     {
       method: "POST",
       body: formData,
@@ -14,7 +16,7 @@ export const uploadImage = async (imageFile) => {
 };
 export const generateVideo = async ({ imageUrl, prompt, motion }) => {
   const response = await fetch(
-    "http://localhost:5000/api/video/generate-video",
+    `${API_BASE_URL}/api/video/generate-video`,
     {
       method: "POST",
       headers: {
