@@ -6,7 +6,7 @@ The project is built as a full-stack web app with a modern UI and a real AI infe
 ---
 
 ## Live Demo
--**AWS Deployed Link:**
+- **AWS Deployed Link:**
   https://image2video.ai.3.111.215.4.sslip.io/
 
 - **Frontend (Vercel):**  
@@ -92,12 +92,12 @@ User Browser
 - Cloudinary SDK
 
 ### Deployment
--**AWS:**
-  -Deployed the application on AWS EC2 (Ubuntu 22.04), manually configuring the server environment and managing system packages
-  -Hosted the Vite frontend using Nginx as a static web server, serving the production build on port 80/443
-  -Ran the Node.js + Express backend using PM2 to ensure process persistence and automatic restarts
-  -Secured the application with HTTPS using Let’s Encrypt (Certbot) and configured a free subdomain via sslip.io
-  -Managed sensitive configuration using environment variables (.env) on EC2 and debugged production issues involving Linux permissions, Nginx errors, and AWS Security         Groups
+- **AWS:**
+  - Deployed the application on AWS EC2 (Ubuntu 22.04), manually configuring the server environment and managing system packages
+  - Hosted the Vite frontend using Nginx as a static web server, serving the production build on port 80/443
+  - Ran the Node.js + Express backend using PM2 to ensure process persistence and automatic restarts
+  - Secured the application with HTTPS using Let’s Encrypt (Certbot) and configured a free subdomain via sslip.io
+  - Managed sensitive configuration using environment variables (.env) on EC2 and debugged production issues involving Linux permissions, Nginx errors, and AWS Security         Groups
 - **Frontend:** Vercel
 - **Backend:** Render
 
